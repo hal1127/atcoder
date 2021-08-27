@@ -1,0 +1,1 @@
+[実践・最強最速のアルゴリズム勉強会　第一回　講義資料(ワークスアプリケーションズ & AtCoder)](https://www.slideshare.net/chokudai/wap-atcoder1)
