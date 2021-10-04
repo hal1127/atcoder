@@ -5,19 +5,24 @@
 using namespace std;
 typedef long long ll;
 
-// ユークリッドの互除法で最大公約数を求める
 ll gcd(ll x, ll y)
 {
   if (x == 0) return y;
   if (y == 0) return x;
-  if (x >= y) return gcd(x % y, y);
+  if (x >= y) return gcd(y, x % y);
   else return gcd(x, y % x);
 }
 
 int main()
 {
-  ll A, B, C;
-  cin >> A >> B >> C;
-  ll g = gcd(A, gcd(B, C));
-  cout << (A / g - 1) + (B / g - 1) + (C / g - 1) << endl;
+  ll A, B;
+  cin >> A >> B;
+  ll r = B / gcd(A, B);
+
+  // r * A > (ll)1e18
+  if (r > (ll)1e18 / A) {
+    cout << "Large" << endl;
+  } else{
+    cout << r * A << endl;
+  }
 }
