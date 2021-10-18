@@ -10,4 +10,5 @@ else
   cp Template.$2 $1/A.cpp
   cp Template.$2 $1/B.cpp
   cp Template.$2 $1/C.cpp
+  cp Template.$2 $1/D.cpp
 fi

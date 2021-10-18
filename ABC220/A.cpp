@@ -7,5 +7,13 @@ typedef long long ll;
 
 int main()
 {
-
+  int A, B, C;
+  cin >> A >> B >> C;
+  rep (i, A, B+1) {
+    if (i % C == 0) {
+      cout << i << endl;
+      return 0;
+    }
+  }
+  cout << -1 << endl;
 }
