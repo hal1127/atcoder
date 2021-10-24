@@ -7,10 +7,11 @@ typedef long long ll;
 
 int main()
 {
-  int N;
-  string S;
-  cin >> N;
-  cin >> S;
-  if (S.at(N-1) == 'o') cout << "Yes" << endl;
-  else cout << "No" << endl;
+  int a, b;
+  cin >> a >> b;
+  int ans = a - 1;
+  if (b >= a) {
+    ans++;
+  }
+  cout << ans << endl;
 }
