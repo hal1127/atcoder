@@ -30,6 +30,7 @@ int main()
       if (A.at(mid) <= B.at(i)) left = mid;
       else right = mid;
     }
+    // end 二分探索
     int min1, min2;
     if (left == -1) {
       min1 = abs(B.at(i) - A.at(0));
