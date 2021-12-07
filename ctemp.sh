@@ -7,8 +7,9 @@ elif [ -z "$2" ]
 then
   echo "テンプレートを指定してください"
 else
-  cp Template.$2 $1/A.cpp
-  cp Template.$2 $1/B.cpp
-  cp Template.$2 $1/C.cpp
-  cp Template.$2 $1/D.cpp
+  cp Template.$2 $1/A.$2
+  cp Template.$2 $1/B.$2
+  cp Template.$2 $1/C.$2
+  cp Template.$2 $1/D.$2
+  echo "成功"
 fi
