@@ -7,9 +7,17 @@ typedef long long ll;
 
 int main()
 {
-  double A, B;
+  int A, B;
   int W;
   cin >> A >> B >> W;
-  W *= 1000;
-  // cout << ceil(W / B) << " " << floor(W / A) << endl;
+
+  int mi = INF, ma = 0;
+  for (int n=1; n <= 1000*W; n++) {
+    if (A*n <= 1000*W && 1000*W <= B*n) {
+      mi = min(mi, n);
+      ma = max(ma, n);
+    }
+  }
+  if (ma == 0) cout << "UNSATISFIABLE" << endl;
+  else printf("%d %d\n", mi, ma);
 }
