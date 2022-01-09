@@ -22,7 +22,7 @@ int main()
   sort(all(A));
   vector<int> diff(Q);
   rep(i, 0, Q) {
-    // 二分探索
+    // 二分探索(upper bound)
     int left = -1;
     int right = N;
     while (right - left > 1) {
