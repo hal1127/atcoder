@@ -1,10 +1,8 @@
 s = ""
 
-N = 100
-a = [str(int(1e9))] * N
+N = 2**63
 
-s += "{}\n".format(N)
-s += " ".join(a) + "\n"
+s += str(N) + "\n"
 
 print(s)
 
