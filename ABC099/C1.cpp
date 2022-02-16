@@ -10,7 +10,7 @@ int main()
   int N;
   cin >> N;
 
-  // dp[i]になるまでの最小回数
+  // iになるまでの最小回数
   vector<int> dp(N+1, -1);
   dp.at(0) = 0;
 
