@@ -5,22 +5,17 @@
 using namespace std;
 typedef long long ll;
 
-int L;
+int N, K;
 
-ll comb(ll n, ll m)
+int comb(int n, int r)
 {
-  ll res = 1;
-  rep (i, 1, m+1) {
-    res *= (n-(i-1));
-    res /= i;
-  }
-
-  return res;
+  if (r == 1) return n;
+  else return (comb(n, r-1) * (n-r+1)) / r;
 }
 
 int main()
 {
-  cin >> L;
+  cin >> N >> K;
 
-  cout << comb(L-1, 11) << endl;
+  cout << N-K+1 << endl;
 }
