@@ -7,12 +7,6 @@ typedef long long ll;
 
 int N, K;
 
-int comb(int n, int r)
-{
-  if (r == 1) return n;
-  else return (comb(n, r-1) * (n-r+1)) / r;
-}
-
 int main()
 {
   cin >> N >> K;
