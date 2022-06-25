@@ -5,7 +5,6 @@
 using namespace std;
 typedef long long ll;
 
-vector<int> W(200000);
 
 int main()
 {
@@ -13,51 +12,30 @@ int main()
   cin >> N;
   string S;
   cin >> S;
+  vector<int> W(N);
   rep (i, 0, N) cin >> W[i];
 
-  vector<int> indexes(N);
-  rep (i, 0, N) indexes[i] = i;
-  sort(all(indexes), [](int l, int r) { return W[l] < W[r]; });
+  vector<pair<int, int>> WS(N);
+  rep (i, 0, N) WS[i] = make_pair(W[i], S[i] - '0');
 
-  vector<int> sorted_W(N);
-  rep (i, 0, N) sorted_W[i] = W[indexes[i]];
+  // ソートの仕方を工夫
+  // 同じW[i]が続く中で、端より大きいxが生まれないようにしている
+  sort(all(WS), [](pair<int, int> l, pair<int, int> r) { return make_pair(l.first, -l.second) < make_pair(r.first, -r.second); });
 
-  vector<char> sorted_S(N);
-  rep (i, 0, N) sorted_S[i] = S[indexes[i]];
-
-  vector<int> dp(N);
   int count_adult = 0;
-  rep (i, 0, N) if (S[i] == '1') count_adult++;
-
-  dp[0] = count_adult;
-  if (sorted_S[0] == '0') dp[0]++;
-  else dp[0]--;
-  rep (i, 1, N) {
-    if (sorted_S[i] == '0') dp[i] = dp[i - 1] + 1;
-    else dp[i] = dp[i - 1] - 1;
-  }
-
-  // rep (i, 0, N) {
-  //   if (i) cout << ' ';
-  //   cout << sorted_S[i];
-  // }
-
-  // cout << endl;
-  // rep (i, 0, N) {
-  //   if (i) cout << ' ';
-  //   cout << sorted_W[i];
-  // }
-  // cout << endl;
-
-  // rep (i, 0, N) {
-  //   if (i) cout << ' ';
-  //   cout << dp[i];
-  // }
-  // cout << endl;
+  rep (i, 0, N) count_adult += WS[i].second;
 
   int ans = count_adult;
-  rep (i, 1, N) if (sorted_W[i - 1] != sorted_W[i]) ans = max(ans, dp[i - 1]);
-  ans = max(ans, dp[N - 1]);
+  int x = count_adult;
+  rep (i, 0, N) {
+    if (WS[i].second == 0) x++;
+    else x--;
+    // ソートの仕方を工夫したので、以下の部分が省略可能。
+    // if (i < (N - 1)) {
+    //   if (WS[i].first != WS[i + 1].first) ans = max(ans, x);
+    // } else ans = max(ans, x);
+    ans = max(ans, x);
+  }
 
   cout << ans << endl;
 }
