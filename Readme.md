@@ -12,4 +12,4 @@
 
 [めぐる式二分探索](https://qiita.com/drken/items/97e37dd6143e33a64c8c)
 
-[いもす法](https://pbs.twimg.com/media/E0QZkd1VoAAM_rd?format=jpg&name=large)
+[いもす法(競プロ典型)](https://pbs.twimg.com/media/E0QZkd1VoAAM_rd?format=jpg&name=large)
