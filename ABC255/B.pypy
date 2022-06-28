@@ -1,0 +1,21 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+INF = int(2e9)
+
+def main():
+  N, K = map(int, input().split())
+  A = list(map(int, input().split()))
+  A = list(map(lambda x: x - 1, A))
+  XY = [list(map(int, input().split())) for _ in range(N)]
+  X, Y = map(list, zip(*XY))
+
+  min_dist = [INF]*N
+  for a in A:
+    for i in range(N):
+      min_dist[i] = min(min_dist[i], sqrt((X[i] - X[a])**2 + (Y[i] - Y[a])**2))
+
+  print(max(min_dist))
+
+if __name__ == "__main__":
+  main()
