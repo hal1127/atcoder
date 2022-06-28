@@ -1,0 +1,30 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+# imos法
+def main():
+  N = int(input())
+  LR = [ list(map(int, input().split())) for _ in range(N) ]
+  L, R = list(zip(*LR)); L = list(L); R = list(R)
+
+  a = [0]*int(2e5+1)
+  for l in L:
+    a[l] += 1
+  for r in R:
+    a[r] -= 1
+
+  for i in range(len(a)-1):
+    a[i+1] += a[i]
+
+  in_interval = False
+  for i in range(len(a)):
+    if not in_interval and a[i] > 0:
+      print(i, end=" ")
+      in_interval = True
+    elif in_interval and a[i] == 0:
+      print(i)
+      in_interval = False
+
+if __name__ == "__main__":
+  main()

@@ -1,0 +1,45 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+h = []
+w = []
+ans = 0
+def dfs(rc, numpla):
+  global ans, h, w
+  r = rc // 3; c = rc % 3
+  if r == 3:
+    ans += 1
+    return "finish"
+  if r == 2:
+    x = w[c] - numpla[0][c] - numpla[1][c]
+    if x <= 0:
+      return
+    numpla[r][c] = x
+    dfs(rc + 1, numpla)
+  elif c == 2:
+    x = h[r] - numpla[r][0] - numpla[r][1]
+    if x <= 0:
+      return
+    numpla[r][c] = x
+    dfs(rc + 1, numpla)
+  else:
+    for x in range(1, 31):
+      numpla[r][c] = x
+      dfs(rc + 1, numpla)
+
+def main():
+  global h, w
+  hw = list(map(int, input().split()))
+  h = hw[:3]
+  w = hw[3:]
+
+  if sum(h) != sum(w):
+    print(0)
+    return
+
+  dfs(0, [[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+  print(ans)
+
+if __name__ == "__main__":
+  main()
