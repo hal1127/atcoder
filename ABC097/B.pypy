@@ -1,0 +1,17 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+def main():
+  X = int(input())
+  ans = 1
+  for b in range(2, X):
+    p = 2
+    while b**p <= X:
+      ans = max(ans, b**p)
+      p += 1
+
+  print(ans)
+
+if __name__ == "__main__":
+  main()
