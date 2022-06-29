@@ -18,6 +18,9 @@ elif [ $2 = "java" ]; then
   cp Template.$2 $1/C/Main.$2
   cp Template.$2 $1/D/Main.$2
   echo "$(tree $1)"
+elif [ -n $3 ]; then
+  cp Template.$2 $1/$3.$2
+  echo "$(tree $1)"
 else
   cp Template.$2 $1/A.$2
   cp Template.$2 $1/B.$2
