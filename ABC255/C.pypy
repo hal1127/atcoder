@@ -10,6 +10,7 @@ def main():
     A = final
     D *= -1
 
+  # lower bound
   left = -1; right = N
   while right - left > 1:
     mid = left + (right - left) // 2
@@ -25,6 +26,7 @@ def main():
   else:
     ans = abs((A + D * right) - X)
 
+  # upper bound
   left = -1; right = N
   while right - left > 1:
     mid = left + (right - left) // 2
