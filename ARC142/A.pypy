@@ -1,0 +1,37 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+def main():
+  N, K = input().split()
+
+  '''
+  f(142) = 142, f(241) = 142
+  f(64) = 46, f(46) = 46
+  f(K) ≠ K のとき、Kになることはない
+  '''
+
+  # reverse
+  rev_min1 = int(K[::-1])
+  rev_min2 = int(str(rev_min1)[::-1])
+  rev_min = min(rev_min1, rev_min2)
+
+  K = int(K); N = int(N)
+
+  if K != rev_min:
+    print(0)
+    return
+
+  is_dup = rev_min1 == rev_min2
+  ans = 0
+  for _ in range(13):
+    if N >= rev_min1:
+      ans += 1
+    if N >= rev_min2 and not is_dup:
+      ans += 1
+    rev_min1 *= 10; rev_min2 *= 10
+
+  print(ans)
+
+if __name__ == "__main__":
+  main()
