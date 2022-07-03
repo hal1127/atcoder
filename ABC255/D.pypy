@@ -1,0 +1,44 @@
+from itertools import accumulate
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+def main():
+  N, Q = map(int, input().split())
+  A = list(map(int, input().split()))
+  X = [int(input()) for _ in range(Q)]
+
+  # 事前にAをソートしておく
+  sorted_A = sorted(A)
+  # A_0 <= A_1 <= ... <= X_i <= ... <= A_N-2 <= A_N-1のとき
+  # 全ての要素をX_iにするための操作数 = Σ_j=0^N-1 abs(X_j - A_j)
+  #                                   = Σ_j=0^k (X_i - A_j) + Σ_j=k+1^N-1 (A_j - X_i)
+  #                                   = k * X_i - Σ_j=0^k A_j + Σ_j=k+1^N-1 A_j - (N - k) X_i
+  # sorted_Aの累積和
+  accumulated_sorted_A = list(accumulate(sorted_A))
+  accumulated_sorted_A = [0] + accumulated_sorted_A
+  # print(sorted_A)
+  # print(accumulated_sorted_A)
+  for i in range(Q):
+    left = -1; right = N
+    while right - left > 1:
+      mid = left + (right - left) // 2
+      if sorted_A[mid] >= X[i]:
+        right = mid
+      else:
+        left = mid
+    # for j in range(right):
+    #   print(sorted_A[j], end=' ')
+    # print(f'[{X[i]}]', end=' ')
+    # for j in range(right, N):
+    #   print(sorted_A[j], end=' ')
+    # print()
+    # print(f'left = {left}, right = {right}')
+    res = X[i] * right
+    res -= accumulated_sorted_A[right]
+    res += accumulated_sorted_A[N] - accumulated_sorted_A[right]
+    res -= X[i] * (N - right)
+    print(res)
+
+if __name__ == "__main__":
+  main()

@@ -1,0 +1,25 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+def main():
+  A, B, C = map(int, input().split())
+
+  d = max(A, B, C) - A
+  B -= d; C -= d
+  ans = d
+
+  d = max(A, B, C) - B
+  A -= d; C -= d
+  ans += d
+
+  d = max(A, B, C) - C
+  A -= d; B -= d
+  ans += d
+
+  if A >= 0 and B >= 0 and C >= 0:
+    print(ans + A)
+  else:
+    print(-1)
+if __name__ == "__main__":
+  main()
