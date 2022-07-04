@@ -1,0 +1,29 @@
+from math import *
+from collections import deque, defaultdict
+from functools import reduce
+
+def main():
+  N = int(input())
+  ST = []
+  for _ in range(N):
+    st = input().split()
+    st = [st[0], int(st[1])]
+    ST.append(st)
+
+  poems = set()
+  ans = 0
+  point = 0
+  for i, st in enumerate(ST):
+    s = st[0]; t = st[1]
+    if s in poems:
+      continue
+    if point < t:
+      point = t
+      ans = i+1
+    poems.add(s)
+
+  print(ans)
+  # thank you!!
+
+if __name__ == "__main__":
+  main()
