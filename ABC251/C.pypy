@@ -23,7 +23,6 @@ def main():
     poems.add(s)
 
   print(ans)
-  # thank you!!
 
 if __name__ == "__main__":
   main()
