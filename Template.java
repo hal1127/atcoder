@@ -9,6 +9,6 @@ public class Main {
   void run ()
   {
     Scanner cin = new Scanner(System.in);
-    
+
   }
 }
